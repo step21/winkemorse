@@ -1,6 +1,6 @@
 #include <morselib.h>
 
-morselib morselib(13); // specifies pin
+morselib morselib(10); // specifies pin
 
 void setup() {
   // put your setup code here, to run once:
@@ -9,6 +9,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  morselib.sendString("aos");
+  morselib.sendString("hallo");
   delay(3000);
 }

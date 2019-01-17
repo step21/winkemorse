@@ -46,19 +46,113 @@ void morselib::sendString(String message)
   for(int i = 0; i < ml; i++)
     {
       char n = message.charAt(i);
-      if(n == 'a') {
+      switch(n) {
+      case 'a':
         morselib::a();
-      } 
-
-        else if(n == 'b') {
+        break;
+      case 'b':
         morselib::b();
-      } else if(n == 'o') {
+        break;
+      case 'c':
+        morselib::b();
+        break;
+      case 'd':
+        morselib::b();
+        break;
+      case 'e':
+        morselib::b();
+        break;
+      case 'f':
+        morselib::b();
+        break;
+      case 'g':
+        morselib::b();
+        break;
+      case 'h':
+        morselib::b();
+        break;
+      case 'i':
+        morselib::b();
+        break;
+      case 'j':
+        morselib::b();
+        break;
+      case 'k':
+        morselib::b();
+        break;
+      case 'l':
+        morselib::b();
+        break;
+      case 'm':
+        morselib::b();
+        break;
+      case 'n':
         morselib::o();
-      } else if(n == 's') {
+        break;
+      case 'o':
+        morselib::b();
+        break;
+      case 'p':
+        morselib::b();
+        break;
+      case 'q':
+        morselib::b();
+        break;
+      case 'r':
+        morselib::b();
+        break;
+      case 's':
         morselib::s();
-      }
-
-
+        break;
+      case 't':
+        morselib::b();
+        break;
+      case 'u':
+        morselib::b();
+        break;
+      case 'v':
+        morselib::b();
+        break;
+      case 'w':
+        morselib::b();
+        break;
+      case 'x':
+        morselib::b();
+        break;
+      case 'y':
+        morselib::b();
+        break;
+      case '0':
+        morselib::b();
+        break;
+      case '1':
+        morselib::b();
+        break;
+      case '2':
+        morselib::b();
+        break;
+      case '3':
+        morselib::b();
+        break;
+      case '4':
+        morselib::b();
+        break;
+      case '5':
+        morselib::b();
+        break;
+      case '6':
+        morselib::b();
+        break;
+      case '7':
+        morselib::b();
+        break;
+      case '8':
+        morselib::b();
+        break;
+      case '9':
+        morselib::b();
+        break;
+       }
       }
   }
 
