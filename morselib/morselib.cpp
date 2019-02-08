@@ -12,7 +12,7 @@
 #endif
 #include <Wire.h>
 #include "morselib.h"
-#define UNIT 250
+#define UNIT 100
 
 
 morselib::morselib(int rpin)
@@ -32,14 +32,15 @@ morselib::morselib(int rpin)
 
 void morselib::dot()
 {
+  Serial.print("dot\n");
   //digitalWrite(_bpin, HIGH);
   //digitalWrite(_gpin, HIGH);
   digitalWrite(_rpin, HIGH);
-  delay(250);
+  delay(UNIT);
   //digitalWrite(_bpin, LOW);
   //digitalWrite(_gpin, LOW);
   digitalWrite(_rpin, LOW);
-  delay(250);  
+  delay(UNIT);  
 }
 
 // space between letters is three units
@@ -47,21 +48,24 @@ void morselib::dot()
 
 void morselib::dash()
 {
+  Serial.print("dash\n");
   //digitalWrite(_bpin, HIGH);
   //digitalWrite(_gpin, HIGH);
   digitalWrite(_rpin, HIGH);
-  delay(750);
+  delay(3 * UNIT);
   //digitalWrite(_bpin, LOW);
   //digitalWrite(_gpin, LOW);
   digitalWrite(_rpin, LOW);
-  delay(250);
+  delay(UNIT);
 }
 
 void morselib::sendString(String message)
 {
   int ml = message.length();
-  //Serial.print("Message length %s", ml);
+  Serial.print("Message length "+ ml);
   // toCharArray()
+  //Serial.print("Message length ");Serial.print(ml);
+
   for(int i = 0; i < ml; i++)
     {
       char n = message.charAt(i);
@@ -176,6 +180,7 @@ void morselib::sendString(String message)
         break;
       default:
         morselib::wordpause();
+        Serial.print("Wortende\n");
        }
       }
   }
