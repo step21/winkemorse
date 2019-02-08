@@ -12,36 +12,55 @@
 #endif
 #include <Wire.h>
 #include "morselib.h"
+#define UNIT 250
 
 
-morselib::morselib(int pin)
+morselib::morselib(int rpin)
+// int bpin, int gpin, 
 {
-  pinMode(pin, OUTPUT);
-  _pin = pin;
+  //pinMode(bpin, OUTPUT);
+  // pinMode(gpin, OUTPUT);
+  pinMode(rpin, OUTPUT);
+  
+  //_bpin = bpin;
+  // _gpin = gpin;
+  _rpin = rpin;
+  
 }
 
 // for now, just assume that these are fine
 
 void morselib::dot()
 {
-  digitalWrite(_pin, HIGH);
+  //digitalWrite(_bpin, HIGH);
+  //digitalWrite(_gpin, HIGH);
+  digitalWrite(_rpin, HIGH);
   delay(250);
-  digitalWrite(_pin, LOW);
+  //digitalWrite(_bpin, LOW);
+  //digitalWrite(_gpin, LOW);
+  digitalWrite(_rpin, LOW);
   delay(250);  
 }
 
+// space between letters is three units
+// space between words is seven units
+
 void morselib::dash()
 {
-  digitalWrite(_pin, HIGH);
-  delay(1000);
-  digitalWrite(_pin, LOW);
+  //digitalWrite(_bpin, HIGH);
+  //digitalWrite(_gpin, HIGH);
+  digitalWrite(_rpin, HIGH);
+  delay(750);
+  //digitalWrite(_bpin, LOW);
+  //digitalWrite(_gpin, LOW);
+  digitalWrite(_rpin, LOW);
   delay(250);
 }
 
 void morselib::sendString(String message)
 {
   int ml = message.length();
-  printf("Message length %s\n", ml);
+  //Serial.print("Message length %s", ml);
   // toCharArray()
   for(int i = 0; i < ml; i++)
     {
@@ -54,109 +73,114 @@ void morselib::sendString(String message)
         morselib::b();
         break;
       case 'c':
-        morselib::b();
+        morselib::c();
         break;
       case 'd':
-        morselib::b();
+        morselib::d();
         break;
       case 'e':
-        morselib::b();
+        morselib::e();
         break;
       case 'f':
-        morselib::b();
+        morselib::f();
         break;
       case 'g':
-        morselib::b();
+        morselib::g();
         break;
       case 'h':
-        morselib::b();
+        morselib::h();
         break;
       case 'i':
-        morselib::b();
+        morselib::i();
         break;
       case 'j':
-        morselib::b();
+        morselib::j();
         break;
       case 'k':
-        morselib::b();
+        morselib::k();
         break;
       case 'l':
-        morselib::b();
+        morselib::l();
         break;
       case 'm':
-        morselib::b();
+        morselib::m();
         break;
       case 'n':
-        morselib::o();
+        morselib::n();
         break;
       case 'o':
-        morselib::b();
+        morselib::o();
         break;
       case 'p':
-        morselib::b();
+        morselib::p();
         break;
       case 'q':
-        morselib::b();
+        morselib::q();
         break;
       case 'r':
-        morselib::b();
+        morselib::r();
         break;
       case 's':
         morselib::s();
         break;
       case 't':
-        morselib::b();
+        morselib::t();
         break;
       case 'u':
-        morselib::b();
+        morselib::u();
         break;
       case 'v':
-        morselib::b();
+        morselib::v();
         break;
       case 'w':
-        morselib::b();
+        morselib::w();
         break;
       case 'x':
-        morselib::b();
+        morselib::x();
         break;
       case 'y':
-        morselib::b();
+        morselib::y();
         break;
       case '0':
-        morselib::b();
+        morselib::zero();
         break;
       case '1':
-        morselib::b();
+        morselib::one();
         break;
       case '2':
-        morselib::b();
+        morselib::two();
         break;
       case '3':
-        morselib::b();
+        morselib::three();
         break;
       case '4':
-        morselib::b();
+        morselib::four();
         break;
       case '5':
-        morselib::b();
+        morselib::five();
         break;
       case '6':
-        morselib::b();
+        morselib::six();
         break;
       case '7':
-        morselib::b();
+        morselib::seven();
         break;
       case '8':
-        morselib::b();
+        morselib::eight();
         break;
       case '9':
-        morselib::b();
+        morselib::nine();
         break;
+      case '.':
+        morselib::fullstop();
+        break;
+      default:
+        morselib::wordpause();
        }
       }
   }
 
-    void morselib::a() { morselib::dot(); morselib::dash();}
+    void morselib::a() { morselib::dot(); morselib::dash(); }
     void morselib::b() { morselib::dash(); morselib::dot(); morselib::dot(); morselib::dot(); }
     void morselib::c() { morselib::dash(); morselib::dot(); morselib::dash(); morselib::dot();}
     void morselib::d() { morselib::dash(); morselib::dot(); morselib::dot(); }
@@ -192,3 +216,6 @@ void morselib::sendString(String message)
     void morselib::eight() { morselib::dash(); morselib::dash(); morselib::dash(); morselib::dot(); morselib::dot(); }
     void morselib::nine() { morselib::dash(); morselib::dash(); morselib::dash(); morselib::dash(); morselib::dot(); }
     void morselib::zero() { morselib::dash(); morselib::dash(); morselib::dash(); morselib::dash(); morselib::dash(); }
+    void morselib::fullstop() { morselib::dot(); morselib::dash(); morselib::dot(); morselib::dash(); morselib::dot(); morselib::dash(); }  
+    void morselib::wordpause() { delay(7 * UNIT); }
+    

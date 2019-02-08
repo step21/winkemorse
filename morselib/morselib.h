@@ -19,8 +19,8 @@
 class morselib
 {
   public:
-    morselib(int pin);
-
+    morselib(int rpin);
+// int gpin, int bpin
     void dot();
     void dash();
     void sendString(String);
@@ -60,8 +60,14 @@ class morselib
     void eight();
     void nine();
     void zero();
+    void fullstop();
+    void wordpause();
   private:
-    int _pin;
+    int _rpin;
+    // int _gpin;
+    // int _rpin;
+    
+    
 };
 
 #endif
